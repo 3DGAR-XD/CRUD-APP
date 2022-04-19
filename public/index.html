@@ -111,7 +111,8 @@
 				<tbody>
 				</tbody>
 			</table>
-			<button class="btn btn-warning w-25 align-self-center" id="add-film" data-bs-toggle="modal" data-bs-target="#modaladd">Add Film</button>
+			<button class="btn btn-warning w-25 align-self-center" id="add-film" data-bs-toggle="modal" data-bs-target="#modaladd"><i class="bi bi-file-earmark-plus"></i>Add Film</button>
+
 			<!-- #region modals -->
 			<div class="modal fade" id="modaladd" tabindex="-1" aria-labelledby="modaladd" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-centered">
@@ -162,24 +163,24 @@
 						<div class="modal-body">
 							<form id="form-edit-film">
 								<div class="form-floating my-2">
-									<input class="form-control" type="text" name="name" id="name-add" placeholder="Name" required>
-									<label for="name-add">Name</label>
+									<input class="form-control" type="text" name="name" id="name-edit" placeholder="Name" required>
+									<label for="name-edit">Name</label>
 									<div class="label-error d-none text-start">Check this field</div>
 
 								</div>
 								<div class="form-floating my-2">
-									<input class="form-control" type="number" name="duration" id="duration-add" placeholder="Duration" max="900" required>
-									<label for="duration-add">Duration</label>
+									<input class="form-control" type="number" name="duration" id="duration-edit" placeholder="Duration" max="900" required>
+									<label for="duration-edit">Duration</label>
 									<div class="label-error d-none text-start">Check this field</div>
 								</div>
 								<div class="form-floating my-2">
-									<input class="form-control" type="number" name="rating" id="rating-add" placeholder="Rating" max="10.0" required>
-									<label for="rating-add">Rating</label>
+									<input class="form-control" type="number" name="rating" id="rating-edit" placeholder="Rating" max="10.0" required>
+									<label for="rating-edit">Rating</label>
 									<div class="label-error d-none text-start">Check this field</div>
 								</div>
 								<div class="form-floating my-2">
-									<input class="form-control" type="number" name="year" id="year-add" placeholder="Year" max="5000" required>
-									<label for="rating-add">Year</label>
+									<input class="form-control" type="number" name="year" id="year-edit" placeholder="Year" max="5000" required>
+									<label for="rating-edit">Year</label>
 									<div class="label-error d-none text-start">Check this field</div>
 								</div>
 							</form>

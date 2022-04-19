@@ -62,12 +62,12 @@ $("#add-film-button").off()
 $("#edit-film-button").off()
 	.click((e) => {
 		e.preventDefault();
-		const name = document.getElementById("name-edit");
+		const name = document.querySelector("#name-edit");
 		const labelName = document.querySelector("#"+ name.id + "~.label-error");
-		const year = document.getElementById("year-edit");
+		const year = document.querySelector("#year-edit");
 		const labelYear = document.querySelector("#"+ year.id + "~.label-error");
-		const duration = document.getElementById("duration-edit");
-		const rating = document.getElementById("rating-edit");
+		const duration = document.querySelector("#duration-edit");
+		const rating = document.querySelector("#rating-edit");
 		const labelRating = document.querySelector("#"+ rating.id + "~.label-error");
 		if (!validate(name, labelName)) return false;
 		if (!validate(year, labelYear)) return false;
@@ -75,6 +75,7 @@ $("#edit-film-button").off()
 		if (!validate(rating, labelRating)) return false;
 
 		const formEdit = {
+			id: document.querySelector("tr td").innerHTML,
 			name: name.value.trim(),
 			year: year.value.trim(),
 			duration: duration.value.trim(),
@@ -122,14 +123,14 @@ const add = (data) => {
 
 				const tr = document.createElement("tr");
 				tr.dataset.id = obj.id;
-				tr.innerHTML = `<td class="id-edit">${obj.id}</td>
-								<td class="name-edit">${obj.name}</td>
-								<td class="duration-edit">${obj.duration}</td>
-								<td class="rating-edit">${obj.rating}</td>
-								<td class="year-edit">${obj.year}</td>
+				tr.innerHTML = `<td class="id-table">${obj.id}</td>
+								<td class="name-table">${obj.name}</td>
+								<td class="duration-table">${obj.duration}</td>
+								<td class="rating-table">${obj.rating}</td>
+								<td class="year-table">${obj.year}</td>
 								<td>
-									<button class="btn btn-primary w-25" data-bs-toggle="modal" data-bs-target="#modaledit">Edit</button>
-									<button class="btn btn-danger w-50" onclick="del(${obj.id})">Delete</button>
+									<button class="btn btn-primary w-25" data-bs-toggle="modal" data-bs-target="#modaledit"><i class="bi bi-pencil"></i>Edit</button>
+									<button class="btn btn-danger w-50" onclick="del(${obj.id})"><i class="bi bi-trash3"></i>Delete</button>
 								</td>`;
 				document.querySelector("tbody").appendChild(tr);
 				new swal("Success", "Film added", "success");
@@ -168,26 +169,26 @@ const del = (id) => {
 if (localStorage.getItem("user").length > 0 ) {
 	document.getElementById("index").classList.add("d-none");
 	document.getElementById("crud").classList.remove("d-none");
-	(()=>{
-		// traer los datos de la base de datos
-		$.get("http://localhost/CRUD-APP/server/getFilms.php",
-			(response) => {
-				if(response !== "fail"){
-					const obj = JSON.parse(response);
-					const tr = document.createElement("tr");
-					tr.dataset.id = obj.id;
-					tr.innerHTML = `<td class="id-edit">${obj.id}</td>
-									<td class="name-edit">${obj.name}</td>
-									<td class="duration-edit">${obj.duration}</td>
-									<td class="rating-edit">${obj.rating}</td>
-									<td class="year-edit">${obj.year}</td>
-									<td>
-										<button class="btn btn-primary w-25" data-bs-toggle="modal" data-bs-target="#modaledit" onclick="edit(${obj.id})">Edit</button>
-										<button class="btn btn-danger w-50" onclick="del(${obj.id})">Delete</button>
-									</td>`;
-					document.querySelector("tbody").appendChild(tr);
-				}
-			}
-		)
-	})();
 }
+(()=>{
+	// traer los datos de la base de datos
+	$.get("http://localhost/CRUD-APP/server/getFilms.php",
+		(response) => {
+			if(response !== "fail"){
+				const obj = JSON.parse(response);
+				const tr = document.createElement("tr");
+				tr.dataset.id = obj.id;
+				tr.innerHTML = `<td class="id-edit">${obj.id}</td>
+								<td class="name-edit">${obj.name}</td>
+								<td class="duration-edit">${obj.duration}</td>
+								<td class="rating-edit">${obj.rating}</td>
+								<td class="year-edit">${obj.year}</td>
+								<td>
+									<button class="btn btn-primary w-25" data-bs-toggle="modal" data-bs-target="#modaledit">Edit</button>
+									<button class="btn btn-danger w-50" onclick="del(${obj.id})">Delete</button>
+								</td>`;
+				document.querySelector("tbody").appendChild(tr);
+			}
+		}
+	)
+})();
