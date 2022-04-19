@@ -1,0 +1,7 @@
+.invalid{
+	border: 1px solid #f00;
+	background-color: #f001;
+}
+.label-error{
+	color: #f00;
+}
